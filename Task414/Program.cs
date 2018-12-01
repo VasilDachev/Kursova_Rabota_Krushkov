@@ -21,39 +21,47 @@ namespace Task414
         static void Main(string[] args)
         {
             
-            int br;
-            int[] A;
-            int[] B;
-            int[] C;
-            // for (br = 0; br < 3; br++)
-            // {
-            //     Console.Write("Enter array lenght:");
-            //     int n = int.Parse(Console.ReadLine());
-            //     Calculating(CreateString(n));
-            // }
-            // Console.WriteLine("");
             Console.Write("Enter array lenght:");
             int n = int.Parse(Console.ReadLine());
-            int a = Calculating(CreateString(n));
-            int b = Calculating(CreateString(n));
-            int c = Calculating(CreateString(n));
-            if (a > b && a > c)
+
+            int[] arrayA = CreateString(n);
+            int A = Calculating(arrayA);
+            int[] arrayB = CreateString(n);
+            int B = Calculating(arrayB);
+            int[] arrayC = CreateString(n);
+            int C = Calculating(arrayC);
+            if (A > B && A > C)
             {
-                Console.WriteLine("Biggest sum is {0}", a);
+                Console.WriteLine("Biggest sum is {0}", A);
             }
             else
             {
-                if (b > a && b > c)
+                if (B > A && B > C)
                 {
-                    Console.WriteLine("Biggest sum is {0}", b);
+                    Console.WriteLine("Biggest sum is {0}", B);
                 }
                 else
                 {
-                    Console.WriteLine("Biggest sum is {0}", c);
+                    Console.WriteLine("Biggest sum is {0}", C);
                 }
             }
+            int p = -1;
+            for (int k = 0; k < arrayC.Length; k++)
+            {
+                arrayC[k] = arrayA[k] * arrayB[k] * arrayB[k];
+                for(int t = 0; t <= p; t++)
+                {
+                    arrayC[k] = arrayC[k] * arrayA[k] * arrayB[k] * arrayB[k];
+                }
+                p++;
+            }
+            for(int w = 0; w < arrayC.Length; w++)
+            {
+                Console.Write(" " + arrayC[w]);
+                
+            }
 
-
+            Console.WriteLine(" ");
         }
         static int[] CreateString(int n)
         {
@@ -71,11 +79,13 @@ namespace Task414
             for (i = 0; i < arr.Length; i++)
             {
                 Console.Write(" {0} ", arr[i]);
-                Console.WriteLine(" ");
+                
             }
-            
+            Console.WriteLine(" ");
             return arr;
         }
+        
+
         static int Calculating(int[] arr)
         {
             int sum = 0;
@@ -89,6 +99,6 @@ namespace Task414
             Console.WriteLine("The sum is {0}", sum);
             return sum;
         }
-       
+      
     }
 }
